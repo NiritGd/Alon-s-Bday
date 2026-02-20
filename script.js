@@ -544,7 +544,8 @@ function shuffle(arr) {
 function buildInterleavedDeck() {
   const buckets = {};
   for (const c of CARDS) {
-    (buckets[c.theme] ||= []).push(c);
+    if (!buckets[c.theme]) buckets[c.theme] = [];
+    buckets[c.theme].push(c);
   }
   // Shuffle each bucket
   for (const key of Object.keys(buckets)) shuffle(buckets[key]);
