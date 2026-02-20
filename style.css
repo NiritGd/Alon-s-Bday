@@ -45,78 +45,116 @@ body {
 .hero {
   text-align: center;
   padding: 3rem 0 2rem;
+  position: relative;
+  overflow: hidden;
 }
-.age-badge {
-  display: inline-flex;
+
+/* Floating party emojis */
+.hero-emojis {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.float-emoji {
+  position: absolute;
+  font-size: 1.6rem;
+  opacity: 0.25;
+  animation: emoji-float 6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.85s);
+}
+.float-emoji:nth-child(1) { left: 5%;  top: 10%; }
+.float-emoji:nth-child(2) { left: 88%; top: 5%;  }
+.float-emoji:nth-child(3) { left: 15%; top: 70%; }
+.float-emoji:nth-child(4) { left: 82%; top: 65%; }
+.float-emoji:nth-child(5) { left: 50%; top: 2%;  }
+.float-emoji:nth-child(6) { left: 92%; top: 40%; }
+.float-emoji:nth-child(7) { left: 2%;  top: 42%; }
+
+@keyframes emoji-float {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1);   opacity: 0.2; }
+  50%      { transform: translateY(-14px) rotate(12deg) scale(1.25); opacity: 0.45; }
+}
+
+/* Date tag */
+.hero-top-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--tech);
+  background: rgba(0, 188, 212, 0.08);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  border-radius: 50px;
+  padding: 0.3rem 1.2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* Main title */
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 10vw, 5rem);
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.hero-name {
+  font-size: clamp(3.5rem, 16vw, 8rem);
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, var(--gold) 0%, #ffe066 30%, var(--gold) 50%, #ff6b6b 75%, var(--gold) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-name 4s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 0 30px rgba(245, 166, 35, 0.3));
+}
+@keyframes shimmer-name {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Decorative divider with "16" */
+.hero-divider {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 88px; height: 88px;
-  border-radius: 50%;
-  background: var(--gold);
-  color: #000;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  line-height: 1;
-  margin-bottom: 1.25rem;
-  animation: pulse-badge 2.4s ease-in-out infinite;
-  box-shadow: 0 0 0 0 var(--gold-glow);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
-@keyframes pulse-badge {
-  0%, 100% { box-shadow: 0 0 0 0   var(--gold-glow); }
-  50%       { box-shadow: 0 0 0 18px rgba(245,166,35,0); }
+.hero-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
-.glitch-title {
+.hero-sixteen {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 11vw, 7rem);
-  letter-spacing: 0.06em;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
   color: var(--gold);
-  position: relative;
-  display: inline-block;
-  line-height: 1;
+  padding: 0 0.2rem;
 }
-.glitch-title::before,
-.glitch-title::after {
-  content: attr(data-text);
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  font: inherit; letter-spacing: inherit;
+.hero-spark {
+  color: var(--gold);
+  font-size: 0.7rem;
+  animation: spark-pulse 2s ease-in-out infinite;
 }
-.glitch-title::before {
-  color: var(--geo);
-  clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
-  animation: glitch-top 5s steps(1) infinite;
+.hero-spark:last-child {
+  animation-delay: -1s;
 }
-.glitch-title::after {
-  color: var(--tech);
-  clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
-  animation: glitch-bot 5s steps(1) infinite;
+@keyframes spark-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50%      { opacity: 1;   transform: scale(1.3); }
 }
-@keyframes glitch-top {
-  0%,88%,100%{transform:translateX(0);opacity:0}
-  90%{transform:translateX(-5px);opacity:1}
-  92%{transform:translateX(5px);opacity:1}
-  94%{transform:translateX(-2px);opacity:1}
-  96%{transform:translateX(0);opacity:0}
-}
-@keyframes glitch-bot {
-  0%,82%,100%{transform:translateX(0);opacity:0}
-  84%{transform:translateX(5px);opacity:1}
-  86%{transform:translateX(-5px);opacity:1}
-  88%{transform:translateX(2px);opacity:1}
-  90%{transform:translateX(0);opacity:0}
-}
+
 .subtitle {
-  margin-top: 0.9rem;
+  margin-top: 0.5rem;
   color: var(--muted);
   font-size: 1.05rem;
   font-style: italic;
-}
-.subtitle-he {
-  margin-top: 0.5rem;
-  color: var(--gold);
-  font-size: 1.15rem;
-  font-weight: 600;
-  direction: rtl;
 }
 
 /* ════════════════════════════════════════
@@ -1273,8 +1311,9 @@ body {
   .container { padding: 1rem 0.75rem 3rem; }
   .card { padding: 1.2rem; font-size: 0.88rem; }
   .hero { padding: 2rem 0 1.5rem; }
-  .glitch-title { font-size: clamp(2.5rem, 13vw, 4.5rem); }
-  .age-badge { width: 72px; height: 72px; font-size: 2rem; }
+  .hero-title { font-size: clamp(2rem, 10vw, 3.5rem); }
+  .hero-name { font-size: clamp(3rem, 16vw, 5.5rem); }
+  .float-emoji { font-size: 1.2rem; }
   .surprise-btn { padding: 0.8rem 2rem; font-size: 1.05rem; }
   .drake-icon, .brain-icon { width: 52px; min-width: 52px; }
   .quote-text { font-size: 1.05rem; }
