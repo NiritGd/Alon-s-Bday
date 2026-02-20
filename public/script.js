@@ -401,7 +401,6 @@ Key reflections from the past year:
 function renderCard(card) {
   const themeLabels = { geo: '🌍 Geopolitics', soccer: '⚽ Liverpool', tech: '💻 Tech & Business', photo: '📸 Throwback' };
   let badge = `<div class="card-theme-badge ${card.theme}">${themeLabels[card.theme]}</div>`;
-  let badge = `<div class="card-theme-badge ${card.theme}">${themeLabels[card.theme]}</div>`;
   let inner = '';
 
   switch (card.format) {
