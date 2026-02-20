@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 16th Alon! 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <main class="container">
+
+    <!-- ── Hero ── -->
+    <header class="hero">
+      <div class="age-badge">16</div>
+      <h1 class="glitch-title" data-text="ALON IS 16">ALON IS 16</h1>
+      <p class="subtitle">Still thinks he knows everything. We love him anyway.</p>
+      <p class="subtitle-he">יום הולדת שמח! 🎉</p>
+    </header>
+
+    <!-- ── Theme Selector ── -->
+    <section class="theme-section" id="themeSection">
+      <p class="section-label">Pick a vibe — get your birthday roast</p>
+
+      <div class="theme-buttons">
+
+        <button class="theme-btn geo" data-theme="geopolitics">
+          <span class="btn-icon">🌍</span>
+          <span class="btn-label">Breaking News</span>
+          <span class="btn-sub">Geopolitics Edition</span>
+        </button>
+
+        <button class="theme-btn soccer" data-theme="soccer">
+          <span class="btn-icon">⚽</span>
+          <span class="btn-label">Sky Sports</span>
+          <span class="btn-sub">Premier League Edition</span>
+        </button>
+
+        <button class="theme-btn tech" data-theme="tech">
+          <span class="btn-icon">💻</span>
+          <span class="btn-label">Product Launch</span>
+          <span class="btn-sub">Tech Edition</span>
+        </button>
+
+      </div>
+
+      <button class="random-btn" data-theme="random">
+        🎲&nbsp; Surprise Me
+      </button>
+    </section>
+
+    <!-- ── Loading ── -->
+    <section class="loading-section" id="loadingSection" style="display:none">
+      <div class="loading-ring"></div>
+      <p class="loading-text" id="loadingText">Claude is writing your roast…</p>
+    </section>
+
+    <!-- ── Message ── -->
+    <section class="message-section" id="messageSection" style="display:none">
+
+      <div class="message-header">
+        <span class="msg-icon" id="msgIcon"></span>
+        <span class="msg-label" id="msgLabel"></span>
+      </div>
+
+      <div class="message-box" id="messageBox">
+        <p class="message-text" id="messageText"></p>
+        <span class="cursor" id="cursor">|</span>
+      </div>
+
+      <div class="message-actions">
+        <button class="again-btn" id="againBtn">🔄 Generate Another</button>
+        <button class="change-btn" id="changeBtn">↩ Change Theme</button>
+      </div>
+
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+      <p>Made with love &amp; Claude AI for Alon's 16th 🎂</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
