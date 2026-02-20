@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 16th Alon! 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="age-badge">16</div>
+      <h1 class="glitch-title" data-text="ALON IS 16">ALON IS 16</h1>
+      <p class="subtitle">Still thinks he knows everything. We love him anyway.</p>
+      <p class="subtitle-he">!יום הולדת שמח 🎉</p>
+    </header>
+
+    <!-- Card Display Area -->
+    <section class="card-area" id="cardArea">
+      <div class="card-placeholder" id="cardPlaceholder">
+        <p class="placeholder-emoji">🎂</p>
+        <p class="placeholder-text">Hit the button to get your first card</p>
+      </div>
+      <div class="card-wrapper" id="cardWrapper" style="display:none"></div>
+    </section>
+
+    <!-- Surprise Button + Counter -->
+    <section class="button-area">
+      <button class="surprise-btn" id="surpriseBtn">
+        <span class="btn-dice">🎲</span>
+        <span>Surprise Me</span>
+      </button>
+      <p class="card-counter" id="cardCounter"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>Made with love for Alon's 16th 🎂</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

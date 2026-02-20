@@ -1,0 +1,1282 @@
+/* ════════════════════════════════════════
+   Alon's 16th Birthday — Styles
+   Pure vanilla CSS, no build step
+════════════════════════════════════════ */
+
+/* ── Variables ── */
+:root {
+  --bg:           #060612;
+  --surface:      #0d0d1f;
+  --border:       #1e1e3a;
+  --text:         #e2e8f0;
+  --muted:        #7c8ca8;
+  --gold:         #f5a623;
+  --gold-glow:    rgba(245, 166, 35, 0.45);
+  --geo:          #e53935;
+  --geo-glow:     rgba(229, 57, 53, 0.25);
+  --soccer:       #C8102E;
+  --soccer-glow:  rgba(200, 16, 46, 0.25);
+  --tech:         #00bcd4;
+  --tech-glow:    rgba(0, 188, 212, 0.25);
+  --radius:       14px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* ════════════════════════════════════════
+   Hero
+════════════════════════════════════════ */
+.hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+.age-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  animation: pulse-badge 2.4s ease-in-out infinite;
+  box-shadow: 0 0 0 0 var(--gold-glow);
+}
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 0 0 0   var(--gold-glow); }
+  50%       { box-shadow: 0 0 0 18px rgba(245,166,35,0); }
+}
+.glitch-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 11vw, 7rem);
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+.glitch-title::before,
+.glitch-title::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  font: inherit; letter-spacing: inherit;
+}
+.glitch-title::before {
+  color: var(--geo);
+  clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
+  animation: glitch-top 5s steps(1) infinite;
+}
+.glitch-title::after {
+  color: var(--tech);
+  clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
+  animation: glitch-bot 5s steps(1) infinite;
+}
+@keyframes glitch-top {
+  0%,88%,100%{transform:translateX(0);opacity:0}
+  90%{transform:translateX(-5px);opacity:1}
+  92%{transform:translateX(5px);opacity:1}
+  94%{transform:translateX(-2px);opacity:1}
+  96%{transform:translateX(0);opacity:0}
+}
+@keyframes glitch-bot {
+  0%,82%,100%{transform:translateX(0);opacity:0}
+  84%{transform:translateX(5px);opacity:1}
+  86%{transform:translateX(-5px);opacity:1}
+  88%{transform:translateX(2px);opacity:1}
+  90%{transform:translateX(0);opacity:0}
+}
+.subtitle {
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+.subtitle-he {
+  margin-top: 0.5rem;
+  color: var(--gold);
+  font-size: 1.15rem;
+  font-weight: 600;
+  direction: rtl;
+}
+
+/* ════════════════════════════════════════
+   Card Area
+════════════════════════════════════════ */
+.card-area {
+  min-height: 200px;
+  margin: 1rem 0;
+}
+.card-placeholder {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+}
+.placeholder-emoji {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+.placeholder-text {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Card wrapper — entrance animation */
+.card-wrapper {
+  animation: card-enter 0.45s ease-out;
+}
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ════════════════════════════════════════
+   Button Area
+════════════════════════════════════════ */
+.button-area {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.surprise-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 2.6rem;
+  background: var(--gold);
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px var(--gold-glow);
+}
+.surprise-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 32px var(--gold-glow);
+}
+.surprise-btn:active {
+  transform: scale(0.97);
+}
+.btn-dice {
+  font-size: 1.3rem;
+}
+.card-counter {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ════════════════════════════════════════
+   Footer
+════════════════════════════════════════ */
+.site-footer {
+  text-align: center;
+  padding: 3rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* ════════════════════════════════════════
+   Confetti
+════════════════════════════════════════ */
+.confetti-container {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  top: -16px;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+  to { transform: translateY(110vh) rotate(720deg); }
+}
+
+/* ════════════════════════════════════════
+   THEME BADGES — small tag on each card
+════════════════════════════════════════ */
+.card-theme-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+.card-theme-badge.geo    { background: var(--geo);    color: #fff; }
+.card-theme-badge.soccer { background: var(--soccer); color: #fff; }
+.card-theme-badge.tech   { background: var(--tech);   color: #000; }
+
+/* ════════════════════════════════════════════════════════════
+   CARD FORMAT STYLES
+   Each card format gets its own visual treatment
+════════════════════════════════════════════════════════════ */
+
+/* ── Base card ── */
+.card {
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 0 auto;
+  max-width: 100%;
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+/* ────────────────────────────────
+   1. Drake Meme
+──────────────────────────────── */
+.card-drake {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  padding: 0;
+  overflow: hidden;
+}
+.drake-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 80px;
+}
+.drake-row + .drake-row {
+  border-top: 2px solid var(--border);
+}
+.drake-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  min-width: 72px;
+  font-size: 2rem;
+  background: rgba(255,255,255,0.03);
+  border-right: 2px solid var(--border);
+}
+.drake-text {
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.drake-row.reject .drake-text {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(124,140,168,0.4);
+}
+.drake-row.accept .drake-text {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ────────────────────────────────
+   2. Expanding Brain
+──────────────────────────────── */
+.card-brain {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  padding: 0;
+  overflow: hidden;
+}
+.brain-tier {
+  display: flex;
+  align-items: stretch;
+  min-height: 64px;
+}
+.brain-tier + .brain-tier {
+  border-top: 1px solid var(--border);
+}
+.brain-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  min-width: 72px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.02);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.brain-text {
+  padding: 0.85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.brain-tier:last-child {
+  background: rgba(245,166,35,0.06);
+}
+.brain-tier:last-child .brain-text {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ────────────────────────────────
+   3. Breaking News
+──────────────────────────────── */
+.card-breaking {
+  background: #1a0000;
+  border: 2px solid var(--geo);
+  position: relative;
+  overflow: hidden;
+}
+.breaking-banner {
+  background: var(--geo);
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 1rem;
+  margin: -1.5rem -1.5rem 1rem;
+  text-align: center;
+}
+.breaking-body {
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ────────────────────────────────
+   4. Bio / Analyst Card
+──────────────────────────────── */
+.card-bio {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-left: 5px solid var(--gold);
+}
+.bio-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.bio-title {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+.bio-line {
+  padding: 0.2rem 0;
+  color: var(--text);
+}
+.bio-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ────────────────────────────────
+   5. TikTok / Instagram
+──────────────────────────────── */
+.card-tiktok {
+  background: #000;
+  border: 2px solid #333;
+  border-radius: var(--radius);
+  color: #fff;
+}
+.tiktok-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.tiktok-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.tiktok-user {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.tiktok-caption {
+  margin-bottom: 0.75rem;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+.tiktok-meta {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 0.6rem;
+}
+.tiktok-comment {
+  padding: 0.4rem 0;
+  border-top: 1px solid #222;
+  font-size: 0.88rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.tiktok-comment-text { flex: 1; }
+.tiktok-likes {
+  color: #888;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* ────────────────────────────────
+   6. UN Observer Bio
+──────────────────────────────── */
+.card-un {
+  background: #0a1628;
+  border: 2px solid #2a5298;
+  text-align: center;
+}
+.un-header {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: #5b9bd5;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #2a5298;
+  margin-bottom: 0.75rem;
+}
+.un-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+.un-detail {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.un-quote {
+  font-style: italic;
+  color: #a8c8e8;
+  line-height: 1.7;
+}
+
+/* ────────────────────────────────
+   7. Quote Card
+──────────────────────────────── */
+.card-quote {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--gold);
+  line-height: 0.5;
+  margin-bottom: 0.5rem;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.quote-attr {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.quote-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+/* ────────────────────────────────
+   8. This Is Fine
+──────────────────────────────── */
+.card-fine {
+  background: #2d1b00;
+  border: 2px solid #f5a623;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.fine-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.fine-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.fine-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.fine-label {
+  background: rgba(245,166,35,0.15);
+  border: 1px solid rgba(245,166,35,0.3);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+.fine-footer {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ────────────────────────────────
+   9. WhatsApp Voice Note
+──────────────────────────────── */
+.card-whatsapp {
+  background: #0b3b2d;
+  border: 2px solid #25d366;
+  border-radius: var(--radius);
+}
+.wa-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: #25d366;
+}
+.wa-icon { font-size: 1.2rem; }
+.wa-group { font-weight: 700; }
+.wa-voice {
+  background: rgba(37,211,102,0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.wa-play { font-size: 1.5rem; }
+.wa-wave {
+  flex: 1;
+  height: 24px;
+  background: repeating-linear-gradient(
+    90deg,
+    #25d366 0px, #25d366 2px,
+    transparent 2px, transparent 5px
+  );
+  border-radius: 4px;
+  opacity: 0.5;
+}
+.wa-duration {
+  font-size: 0.8rem;
+  color: #25d366;
+  font-family: 'JetBrains Mono', monospace;
+}
+.wa-detail {
+  font-size: 0.85rem;
+  color: #a8dfc0;
+  padding: 0.2rem 0;
+}
+.wa-muted {
+  color: #5a8a72;
+  font-style: italic;
+}
+
+/* ────────────────────────────────
+   10. Sky Sports Transfer
+──────────────────────────────── */
+.card-sky {
+  background: linear-gradient(135deg, #001a5c 0%, #003399 50%, #0055cc 100%);
+  border: 2px solid #ffcc00;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.sky-banner {
+  background: #ffcc00;
+  color: #001a5c;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  padding: 0.35rem 1rem;
+  margin: -1.5rem -1.5rem 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+.sky-alert {
+  font-size: 1.8rem;
+  margin-right: 0.3rem;
+}
+.sky-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.sky-body {
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+.sky-body em {
+  color: #ffcc00;
+  font-style: italic;
+}
+
+/* ────────────────────────────────
+   11. Stats Card
+──────────────────────────────── */
+.card-stats {
+  background: var(--surface);
+  border: 2px solid var(--border);
+}
+.stats-header {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.stat-label { color: var(--muted); font-size: 0.88rem; }
+.stat-value { font-weight: 600; font-size: 0.88rem; }
+.stat-note {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ────────────────────────────────
+   12. Podcast Card
+──────────────────────────────── */
+.card-podcast {
+  background: linear-gradient(135deg, #1a0a0a 0%, #2d0a0a 100%);
+  border: 2px solid var(--soccer);
+}
+.podcast-show {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--soccer);
+  margin-bottom: 0.25rem;
+}
+.podcast-ep {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.podcast-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.podcast-detail {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.15rem 0;
+}
+.podcast-rating {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(200,16,46,0.3);
+  font-size: 0.85rem;
+}
+.podcast-stars { color: var(--gold); }
+
+/* ────────────────────────────────
+   13. Liverpool Official
+──────────────────────────────── */
+.card-lfc {
+  background: linear-gradient(180deg, #7a0019 0%, #C8102E 100%);
+  border: 2px solid #fff;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.lfc-badge {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.lfc-official {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.75rem;
+}
+.lfc-body {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.lfc-ynwa {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+/* ────────────────────────────────
+   14. Guardian Match Report
+──────────────────────────────── */
+.card-guardian {
+  background: #fff;
+  color: #121212;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+.guardian-header {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #052962;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid #052962;
+  margin-bottom: 0.75rem;
+}
+.guardian-section {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #c70000;
+  margin-bottom: 0.5rem;
+}
+.guardian-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #121212;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+.guardian-body {
+  color: #333;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+/* ────────────────────────────────
+   15. Tweet / X Post
+──────────────────────────────── */
+.card-tweet {
+  background: #000;
+  border: 1px solid #333;
+  color: #e7e9ea;
+}
+.tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.tweet-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.tweet-names {
+  flex: 1;
+}
+.tweet-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.tweet-handle {
+  color: #71767b;
+  font-size: 0.82rem;
+}
+.tweet-body {
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+.tweet-time {
+  font-size: 0.78rem;
+  color: #71767b;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #333;
+  margin-bottom: 0.6rem;
+}
+.tweet-metrics {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  color: #71767b;
+}
+.tweet-metric-val {
+  color: #e7e9ea;
+  font-weight: 700;
+}
+
+/* ────────────────────────────────
+   16. LinkedIn Post
+──────────────────────────────── */
+.card-linkedin {
+  background: #fff;
+  color: #000;
+  border: 1px solid #e0e0e0;
+}
+.li-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+.li-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #0a66c2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.li-info { flex: 1; }
+.li-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #000;
+}
+.li-title {
+  font-size: 0.78rem;
+  color: #666;
+}
+.li-body {
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  white-space: pre-line;
+}
+.li-open {
+  font-size: 0.82rem;
+  color: #0a66c2;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.li-reactions {
+  padding-top: 0.5rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.82rem;
+  color: #666;
+}
+
+/* ────────────────────────────────
+   17. Forbes Card
+──────────────────────────────── */
+.card-forbes {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0d0d1a 100%);
+  border: 2px solid var(--gold);
+  padding: 2rem 1.5rem;
+}
+.forbes-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.forbes-sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(245,166,35,0.2);
+}
+.forbes-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.forbes-body {
+  color: var(--text);
+  line-height: 1.7;
+}
+.forbes-mentor {
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(245,166,35,0.15);
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.forbes-runner {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ────────────────────────────────
+   18. Y Combinator Letter
+──────────────────────────────── */
+.card-yc {
+  background: #fff;
+  color: #111;
+  border: 2px solid #f26522;
+}
+.yc-logo {
+  display: inline-block;
+  background: #f26522;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+.yc-re {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.2rem;
+}
+.yc-status {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.yc-status span {
+  background: #f26522;
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+.yc-body {
+  color: #333;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+.yc-sig {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+.yc-also {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.82rem;
+  color: #888;
+  font-style: italic;
+}
+.yc-reapply {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #f26522;
+}
+
+/* ────────────────────────────────
+   19. Product Spec / Release Notes
+──────────────────────────────── */
+.card-spec {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #00ff88;
+}
+.spec-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.spec-divider {
+  color: #333;
+  margin: 0.3rem 0;
+}
+.spec-line {
+  color: #ccc;
+}
+.spec-key { color: var(--muted); }
+.spec-val { color: #00ff88; }
+.spec-check { color: #00ff88; }
+.spec-bug { color: #ffcc00; }
+.spec-patch { color: var(--tech); }
+.spec-footer {
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #333;
+  color: var(--gold);
+  text-align: center;
+}
+
+/* ────────────────────────────────
+   20. App Store Review
+──────────────────────────────── */
+.card-appstore {
+  background: #1c1c1e;
+  border: 1px solid #38383a;
+  color: #fff;
+}
+.appstore-stars {
+  color: #ffcc00;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.1em;
+}
+.appstore-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+.appstore-body {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 0.92rem;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+.appstore-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #38383a;
+  font-size: 0.8rem;
+  color: #666;
+}
+.appstore-helpful {
+  color: #0a84ff;
+  cursor: default;
+}
+
+/* ────────────────────────────────
+   21. Pitch Deck
+──────────────────────────────── */
+.card-pitch {
+  background: #fff;
+  color: #111;
+  border: none;
+  padding: 2rem 1.5rem;
+}
+.pitch-header {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: #999;
+  margin-bottom: 0.75rem;
+}
+.pitch-row {
+  margin-bottom: 0.6rem;
+}
+.pitch-label {
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #111;
+  margin-bottom: 0.15rem;
+}
+.pitch-value {
+  color: #444;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.pitch-footer {
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* ────────────────────────────────
+   22. Two Buttons Meme
+──────────────────────────────── */
+.card-buttons {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.buttons-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+.buttons-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.btn-option {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.btn-option-label {
+  font-weight: 700;
+  color: var(--tech);
+  margin-right: 0.3rem;
+}
+.buttons-punchline {
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ────────────────────────────────
+   23. Trump Quote
+──────────────────────────────── */
+.card-trump {
+  background: linear-gradient(135deg, #001f4e 0%, #002868 100%);
+  border: 2px solid var(--gold);
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.trump-stars {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3rem;
+}
+.trump-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.trump-attr {
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.trump-sub {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+/* ────────────────────────────────
+   24. "This Means More" parody
+──────────────────────────────── */
+.card-means-more {
+  background: linear-gradient(180deg, #5a0016 0%, #8b0020 50%, #C8102E 100%);
+  border: none;
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+.means-more-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+.means-more-body {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.means-more-footer {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.means-more-note {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}
+
+/* ────────────────────────────────
+   25. Zuckerberg / X Post
+──────────────────────────────── */
+/* Uses .card-tweet styles — just different avatar/handle */
+
+/* ────────────────────────────────
+   Throwback Photo Card (future)
+──────────────────────────────── */
+.card-photo {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  text-align: center;
+  padding: 1rem;
+}
+.photo-frame {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+.photo-caption {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* ════════════════════════════════════════
+   Responsive
+════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .container { padding: 1rem 0.75rem 3rem; }
+  .card { padding: 1.2rem; font-size: 0.88rem; }
+  .hero { padding: 2rem 0 1.5rem; }
+  .glitch-title { font-size: clamp(2.5rem, 13vw, 4.5rem); }
+  .age-badge { width: 72px; height: 72px; font-size: 2rem; }
+  .surprise-btn { padding: 0.8rem 2rem; font-size: 1.05rem; }
+  .drake-icon, .brain-icon { width: 52px; min-width: 52px; }
+  .quote-text { font-size: 1.05rem; }
+  .card-lfc, .card-means-more { padding: 1.5rem 1rem; }
+}
