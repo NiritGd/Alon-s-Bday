@@ -358,6 +358,40 @@ Key reflections from the past year:
       <div class="st-note st-oren">אורן's screen time: 45 min/day <span style="color:var(--muted)">(mostly games)</span></div>`
   },
 
+  // ─────────────────────────────────────
+  // 📸 THROWBACK PHOTO CARDS (5)
+  // ─────────────────────────────────────
+
+  { id: 'P1', theme: 'geo', format: 'photo',
+    photo: 'photos/20161017_104427.jpg',
+    caption: 'Age 6. Already assessing the geopolitical landscape.',
+    sub: '(The elephants had no idea they were being analysed.)',
+  },
+
+  { id: 'P2', theme: 'soccer', format: 'photo',
+    photo: 'photos/IMG_0325.JPG',
+    caption: 'Player of the Match. Self-appointed.',
+    sub: 'Ajax Stadium. Not Liverpool, but at least it\'s not Man City.',
+  },
+
+  { id: 'P3', theme: 'tech', format: 'photo',
+    photo: 'photos/IMG_6035.JPG',
+    caption: 'Alon v3.0 — Still in stealth mode.',
+    sub: 'Early-stage incubator. Pre-seed round.',
+  },
+
+  { id: 'P4', theme: 'geo', format: 'photo',
+    photo: 'photos/IMG_2714.JPG',
+    caption: 'Age 4. New York shirt. Already had dual-market exposure.',
+    sub: 'Airport. Unimpressed. On brand.',
+  },
+
+  { id: 'P5', theme: 'tech', format: 'photo',
+    photo: 'photos/IMG20220521192244.jpg',
+    caption: 'Age 12. Horseshoe Bend. Already had opinions about the Grand Canyon.',
+    sub: '"It\'s impressive, but the US needs better infrastructure to get here."',
+  },
+
 ];
 
 // ══════════════════════════════════════════
@@ -365,7 +399,8 @@ Key reflections from the past year:
 // ══════════════════════════════════════════
 
 function renderCard(card) {
-  const themeLabels = { geo: '🌍 Geopolitics', soccer: '⚽ Liverpool', tech: '💻 Tech & Business' };
+  const themeLabels = { geo: '🌍 Geopolitics', soccer: '⚽ Liverpool', tech: '💻 Tech & Business', photo: '📸 Throwback' };
+  let badge = `<div class="card-theme-badge ${card.theme}">${themeLabels[card.theme]}</div>`;
   let badge = `<div class="card-theme-badge ${card.theme}">${themeLabels[card.theme]}</div>`;
   let inner = '';
 
@@ -413,6 +448,16 @@ function renderCard(card) {
               <span class="tiktok-comment-text">💬 ${c.text}</span>
               <span class="tiktok-likes">${c.likes}</span>
             </div>`).join('')}
+        </div>`;
+      break;
+
+    case 'photo':
+      inner = `
+        ${badge}
+        <div class="card card-photo">
+          <img class="photo-frame" src="${card.photo}" alt="Throwback photo of Alon" loading="lazy" />
+          <div class="photo-caption">${card.caption}</div>
+          ${card.sub ? `<div class="photo-sub">${card.sub}</div>` : ''}
         </div>`;
       break;
 

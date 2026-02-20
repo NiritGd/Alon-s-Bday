@@ -1329,8 +1329,15 @@ body {
 }
 .photo-caption {
   font-style: italic;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.photo-sub {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 0.3rem;
 }
 
 /* ────────────────────────────────
