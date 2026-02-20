@@ -89,6 +89,12 @@
 
   </main>
 
-  <script src="script.js"></script>
+  <script>
+  window.onerror = function(msg, url, line, col, err) {
+    document.body.insertAdjacentHTML('afterbegin',
+      '<div style="background:#ef4444;color:#fff;padding:1rem;font-family:monospace;position:fixed;top:0;left:0;right:0;z-index:99999;font-size:0.85rem;">JS Error: ' + msg + ' (line ' + line + ')</div>');
+  };
+  </script>
+  <script src="script.js" onerror="document.body.insertAdjacentHTML('afterbegin','<div style=\'background:#ef4444;color:#fff;padding:1rem;font-family:monospace;position:fixed;top:0;left:0;right:0;z-index:99999;font-size:0.85rem;\'>Failed to load script.js — file not found</div>')"></script>
 </body>
 </html>
