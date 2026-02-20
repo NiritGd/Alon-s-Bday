@@ -6,7 +6,7 @@
   <title>Happy 16th Alon! 🎂</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -42,15 +42,32 @@
     <section class="card-area" id="cardArea">
       <div class="card-placeholder" id="cardPlaceholder">
         <div class="placeholder-graphic">
-          <div class="gift-box">
-            <div class="gift-lid"></div>
-            <div class="gift-body"></div>
-            <div class="gift-ribbon-v"></div>
-            <div class="gift-ribbon-h"></div>
-          </div>
+          <svg class="gift-svg" viewBox="0 0 120 120" width="100" height="100" aria-hidden="true">
+            <defs>
+              <linearGradient id="gBox" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#b91c1c"/>
+              </linearGradient>
+              <linearGradient id="gLid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff6b6b"/><stop offset="100%" stop-color="#e53935"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="60" cy="108" rx="38" ry="5" fill="rgba(245,166,35,0.12)"/>
+            <rect x="22" y="52" width="76" height="50" rx="5" fill="url(#gBox)"/>
+            <rect x="22" y="66" width="76" height="10" fill="#f5a623" opacity="0.9"/>
+            <rect x="54" y="52" width="12" height="50" fill="#f5a623" opacity="0.9"/>
+            <g class="gift-lid-anim">
+              <rect x="16" y="40" width="88" height="16" rx="5" fill="url(#gLid)"/>
+              <rect x="54" y="40" width="12" height="16" fill="#f5a623" opacity="0.9"/>
+            </g>
+            <path d="M60 40 Q42 18 32 32 Q28 40 60 40" fill="#f5a623"/>
+            <path d="M60 40 Q78 18 88 32 Q92 40 60 40" fill="#f5a623"/>
+            <circle cx="60" cy="40" r="6" fill="#d4940e"/>
+            <circle cx="60" cy="40" r="3" fill="#f5a623"/>
+          </svg>
           <span class="gift-sparkle gift-sparkle-1">✦</span>
           <span class="gift-sparkle gift-sparkle-2">✦</span>
           <span class="gift-sparkle gift-sparkle-3">✧</span>
+          <span class="gift-sparkle gift-sparkle-4">✦</span>
         </div>
         <p class="placeholder-text">30 birthday cards are waiting for you</p>
       </div>

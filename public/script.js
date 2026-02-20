@@ -28,6 +28,7 @@ const CARDS = [
   { id: 'G2', theme: 'geo', format: 'breaking',
     html: `
       <div class="breaking-banner">⚡ BBC BREAKING NEWS</div>
+      <div class="card-hero-img geo-img"><span>🌍</span></div>
       <div class="breaking-body">
         <strong>BREAKING:</strong> 16-year-old Tel Aviv/New York analyst delivers definitive Middle East solution via WhatsApp voice note. Running time: 14 minutes. Sent to: עומר, אורי, יותם, ישי and 8 others.<br><br>
         World leaders have been notified. The UN is "reviewing."
@@ -50,7 +51,7 @@ const CARDS = [
       { icon: '🧠', text: 'Reading the news' },
       { icon: '🧠🧠', text: 'Having strong opinions about the news' },
       { icon: '🧠🧠🧠', text: 'Explaining to adults why they\'re wrong' },
-      { icon: '🌌', text: 'Getting genuinely annoyed they\'re <em>still</em> not getting it' },
+      { icon: '🤯', text: 'Getting genuinely annoyed they\'re <em>still</em> not getting it' },
     ]
   },
 
@@ -114,6 +115,7 @@ const CARDS = [
   { id: 'G10', theme: 'geo', format: 'breaking',
     html: `
       <div class="breaking-banner">⚡ BREAKING NEWS</div>
+      <div class="card-hero-img geo-img"><span>🏢</span></div>
       <div class="breaking-body">
         <strong>BREAKING:</strong> Meta, X, and Google have all quietly dismantled their DEI departments this year.<br><br>
         Alon has been predicting this since age 14.<br><br>
@@ -129,6 +131,7 @@ const CARDS = [
   { id: 'S1', theme: 'soccer', format: 'sky',
     html: `
       <div class="sky-banner"><span class="sky-alert">🚨</span> SKY SPORTS EXCLUSIVE</div>
+      <div class="card-hero-img sky-img"><span>⚽</span></div>
       <div class="sky-headline">LIVERPOOL FC confirm ALON, 16, as Head of Tactical Analysis</div>
       <div class="sky-body">
         Slot: <em>"He's been doing the job from his sofa for years. We made it official."</em><br><br>
@@ -175,6 +178,7 @@ const CARDS = [
   { id: 'S6', theme: 'soccer', format: 'guardian',
     html: `
       <div class="guardian-header">The Guardian</div>
+      <div class="card-hero-img guardian-img"><span>🏟️</span></div>
       <div class="guardian-section">Football</div>
       <div class="guardian-headline">Liverpool 4–1 Manchester City</div>
       <div class="guardian-body">
@@ -187,7 +191,7 @@ const CARDS = [
       { icon: '🧠', text: 'Watch a Liverpool game' },
       { icon: '🧠🧠', text: 'Analyse the game out loud to whoever is nearby' },
       { icon: '🧠🧠🧠', text: 'Message Arne Slot tactical suggestions via social media' },
-      { icon: '🌌', text: 'Conclude the root cause of all problems is Man City existing' },
+      { icon: '🤯', text: 'Conclude the root cause of all problems is Man City existing' },
     ]
   },
 
@@ -266,7 +270,7 @@ Key reflections from the past year:
       { icon: '🧠', text: 'Using AI to finish homework' },
       { icon: '🧠🧠', text: 'Using AI to win arguments with your parents' },
       { icon: '🧠🧠🧠', text: 'Using AI to brief yourself on Big Tech\'s relationship with the Trump administration' },
-      { icon: '🌌', text: 'Becoming the AI' },
+      { icon: '🤯', text: 'Becoming the AI' },
     ]
   },
 
