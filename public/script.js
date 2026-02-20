@@ -8,7 +8,6 @@ const cardArea        = document.getElementById('cardArea');
 const cardPlaceholder = document.getElementById('cardPlaceholder');
 const cardWrapper     = document.getElementById('cardWrapper');
 const surpriseBtn     = document.getElementById('surpriseBtn');
-const cardCounter     = document.getElementById('cardCounter');
 const confettiContainer = document.getElementById('confettiContainer');
 
 // ══════════════════════════════════════════
@@ -472,7 +471,7 @@ function renderCard(card) {
 }
 
 // ══════════════════════════════════════════
-// SHUFFLE ENGINE — no repeats until all seen
+// SHUFFLE ENGINE — no repeats, interleaved categories
 // ══════════════════════════════════════════
 
 let deck = [];
@@ -486,8 +485,38 @@ function shuffle(arr) {
   return arr;
 }
 
+/** Build a deck that interleaves themes so you never get
+ *  the same category twice in a row (best-effort). */
+function buildInterleavedDeck() {
+  const buckets = {};
+  for (const c of CARDS) {
+    (buckets[c.theme] ||= []).push(c);
+  }
+  // Shuffle each bucket
+  for (const key of Object.keys(buckets)) shuffle(buckets[key]);
+
+  const result = [];
+  let lastTheme = null;
+
+  while (Object.keys(buckets).some(k => buckets[k].length > 0)) {
+    // Eligible = buckets with cards, preferring a different theme
+    const eligible = Object.keys(buckets).filter(k => buckets[k].length > 0 && k !== lastTheme);
+    const pool = eligible.length > 0
+      ? eligible
+      : Object.keys(buckets).filter(k => buckets[k].length > 0);
+
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    result.push(buckets[pick].pop());
+    lastTheme = pick;
+
+    if (buckets[pick].length === 0) delete buckets[pick];
+  }
+
+  return result;
+}
+
 function resetDeck() {
-  deck = shuffle([...CARDS]);
+  deck = buildInterleavedDeck().reverse(); // reverse so we pop from end
   seen = 0;
 }
 
@@ -517,9 +546,6 @@ surpriseBtn.addEventListener('click', () => {
   // Force reflow
   void cardWrapper.offsetHeight;
   cardWrapper.style.animation = '';
-
-  // Update counter
-  cardCounter.textContent = `Card ${seen} of ${CARDS.length}`;
 
   // Launch confetti on first card and every 5th card
   if (seen === 1 || seen % 5 === 0) {

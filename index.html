@@ -6,7 +6,7 @@
   <title>Happy 16th Alon! 🎂</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -41,8 +41,18 @@
     <!-- Card Display Area -->
     <section class="card-area" id="cardArea">
       <div class="card-placeholder" id="cardPlaceholder">
-        <p class="placeholder-emoji">🎂</p>
-        <p class="placeholder-text">Hit the button to get your first card</p>
+        <div class="placeholder-graphic">
+          <div class="gift-box">
+            <div class="gift-lid"></div>
+            <div class="gift-body"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+          </div>
+          <span class="gift-sparkle gift-sparkle-1">✦</span>
+          <span class="gift-sparkle gift-sparkle-2">✦</span>
+          <span class="gift-sparkle gift-sparkle-3">✧</span>
+        </div>
+        <p class="placeholder-text">30 birthday cards are waiting for you</p>
       </div>
       <div class="card-wrapper" id="cardWrapper" style="display:none"></div>
     </section>
@@ -50,10 +60,9 @@
     <!-- Surprise Button + Counter -->
     <section class="button-area">
       <button class="surprise-btn" id="surpriseBtn">
-        <span class="btn-dice">🎲</span>
-        <span>Surprise Me</span>
+        <span class="btn-icon">🎉</span>
+        <span>Bring It On</span>
       </button>
-      <p class="card-counter" id="cardCounter"></p>
     </section>
 
     <!-- Footer -->
