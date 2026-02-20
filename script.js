@@ -525,7 +525,6 @@ function resetDeck() {
 }
 
 function drawCard() {
-  if (deck.length === 0) resetDeck();
   seen++;
   return deck.pop();
 }
@@ -534,10 +533,61 @@ function drawCard() {
 resetDeck();
 
 // ══════════════════════════════════════════
+// FINALE MESSAGE
+// ══════════════════════════════════════════
+
+function renderFinale() {
+  return `
+    <div class="card card-finale">
+      <div class="finale-emoji">🚀</div>
+      <div class="finale-title">16 is just the launchpad.</div>
+      <div class="finale-body">
+        30 cards, 30 reasons the world should pay attention.<br><br>
+        You're the kid who debates diplomats, scouts strikers better than Sky Sports, and tells Big Tech what it's doing wrong — <em>and you're right</em>.<br><br>
+        Most people spend their whole lives waiting for permission to have a voice. You never waited. Keep going.<br><br>
+        The next 16 years? The world's not ready.<br>
+        But you are.
+      </div>
+      <div class="finale-sign-off">שכויח, Alon. Happy birthday. ❤️</div>
+      <button class="replay-btn" id="replayBtn">🔄 Start Over</button>
+    </div>`;
+}
+
+// ══════════════════════════════════════════
 // UI LOGIC
 // ══════════════════════════════════════════
 
 surpriseBtn.addEventListener('click', () => {
+  // If deck is empty, show finale
+  if (deck.length === 0) {
+    cardPlaceholder.style.display = 'none';
+    cardWrapper.style.display = 'block';
+    cardWrapper.innerHTML = renderFinale();
+    cardWrapper.style.animation = 'none';
+    void cardWrapper.offsetHeight;
+    cardWrapper.style.animation = '';
+
+    // Hide the main button
+    surpriseBtn.style.display = 'none';
+
+    // Big confetti burst for finale
+    launchConfetti();
+    setTimeout(() => launchConfetti(), 800);
+
+    // Wire up the replay button
+    document.getElementById('replayBtn').addEventListener('click', () => {
+      resetDeck();
+      surpriseBtn.style.display = 'inline-flex';
+      cardPlaceholder.style.display = 'block';
+      cardWrapper.style.display = 'none';
+      cardWrapper.innerHTML = '';
+      cardArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    cardArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+
   const card = drawCard();
 
   // Hide placeholder, show card
