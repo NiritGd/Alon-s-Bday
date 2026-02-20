@@ -341,15 +341,21 @@ Key reflections from the past year:
       <div class="pitch-footer">שכויח.</div>`
   },
 
-  { id: 'T10', theme: 'tech', format: 'buttons',
+  { id: 'T10', theme: 'tech', format: 'screentime',
     html: `
-      <div class="buttons-icon">😰</div>
-      <div style="font-size:0.85rem;color:var(--muted);margin-bottom:0.75rem;">[Man sweating at two buttons]</div>
-      <div class="buttons-row">
-        <div class="btn-option"><span class="btn-option-label">Button A:</span> A world where Big Tech is regulated by people who understand it</div>
-        <div class="btn-option"><span class="btn-option-label">Button B:</span> A world where it's regulated by people who definitely don't</div>
-      </div>
-      <div class="buttons-punchline">Alon, 16, who has been telling both sides exactly what to do since 2022.</div>`
+      <div class="st-header">📱 WEEKLY SCREEN TIME REPORT</div>
+      <div class="st-device">Alon's iPhone · Feb 14–21, 2026</div>
+      <div class="st-total">11h 42m<span class="st-avg"> /day</span></div>
+      <div class="st-change">⬆️ 23% from last week</div>
+      <div class="st-divider"></div>
+      <div class="st-row"><span class="st-app">Twitter / X</span><span class="st-bar st-bar-1"></span><span class="st-time">3h 12m</span></div>
+      <div class="st-row"><span class="st-app">Instagram</span><span class="st-bar st-bar-2"></span><span class="st-time">2h 48m</span></div>
+      <div class="st-row"><span class="st-app">WhatsApp</span><span class="st-bar st-bar-3"></span><span class="st-time">1h 54m</span></div>
+      <div class="st-row"><span class="st-app">YouTube</span><span class="st-bar st-bar-4"></span><span class="st-time">1h 22m</span></div>
+      <div class="st-row"><span class="st-app">Settings</span><span class="st-bar st-bar-5"></span><span class="st-time">0h 02m</span></div>
+      <div class="st-divider"></div>
+      <div class="st-note">Most active: 11:30 PM – 1:00 AM</div>
+      <div class="st-note st-oren">אורן's screen time: 45 min/day <span style="color:var(--muted)">(mostly games)</span></div>`
   },
 
 ];
@@ -463,7 +469,7 @@ function renderCard(card) {
         spec: 'card-spec',
         appstore: 'card-appstore',
         pitch: 'card-pitch',
-        buttons: 'card-buttons',
+        screentime: 'card-screentime',
       };
       const cls = formatClass[card.format] || '';
       inner = `${badge}<div class="card ${cls}">${card.html}</div>`;

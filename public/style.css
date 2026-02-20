@@ -1334,6 +1334,96 @@ body {
 }
 
 /* ────────────────────────────────
+   Screen Time Report
+──────────────────────────────── */
+.card-screentime {
+  background: #1c1c1e;
+  border: 1px solid #38383a;
+  color: #fff;
+}
+.st-header {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+.st-device {
+  font-size: 0.75rem;
+  color: #8e8e93;
+  margin-bottom: 0.75rem;
+}
+.st-total {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+.st-avg {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #8e8e93;
+}
+.st-change {
+  font-size: 0.8rem;
+  color: #30d158;
+  margin-bottom: 0.75rem;
+}
+.st-divider {
+  height: 1px;
+  background: #38383a;
+  margin: 0.6rem 0;
+}
+.st-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  font-size: 0.85rem;
+}
+.st-app {
+  width: 90px;
+  min-width: 90px;
+  color: #8e8e93;
+  font-size: 0.8rem;
+}
+.st-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #38383a;
+  position: relative;
+  overflow: hidden;
+}
+.st-bar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  border-radius: 4px;
+}
+.st-bar-1::after { width: 75%; background: var(--tech); }
+.st-bar-2::after { width: 62%; background: linear-gradient(90deg, #f09433, #dc2743); }
+.st-bar-3::after { width: 42%; background: #25d366; }
+.st-bar-4::after { width: 30%; background: #ff0000; }
+.st-bar-5::after { width: 3%;  background: #8e8e93; }
+.st-time {
+  width: 50px;
+  min-width: 50px;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #ccc;
+}
+.st-note {
+  font-size: 0.8rem;
+  color: #8e8e93;
+  padding: 0.2rem 0;
+}
+.st-oren {
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+/* ────────────────────────────────
    Finale Card
 ──────────────────────────────── */
 .card-finale {
