@@ -528,6 +528,9 @@ function renderCard(card) {
 // SHUFFLE ENGINE — no repeats, interleaved categories
 // ══════════════════════════════════════════
 
+const SESSION_SIZE = 10;
+const MIN_PHOTO_CARDS = 2;
+
 let deck = [];
 let seen = 0;
 
@@ -539,22 +542,36 @@ function shuffle(arr) {
   return arr;
 }
 
-/** Build a deck that interleaves themes so you never get
- *  the same category twice in a row (best-effort). */
+/** Pick SESSION_SIZE cards, guaranteeing at least MIN_PHOTO_CARDS photo cards,
+ *  then interleave themes so you never get the same category twice in a row. */
 function buildInterleavedDeck() {
+  // Separate photo cards from the rest
+  const photoCards = CARDS.filter(c => c.format === 'photo');
+  const otherCards = CARDS.filter(c => c.format !== 'photo');
+
+  // Pick at least MIN_PHOTO_CARDS photos
+  shuffle(photoCards);
+  const pickedPhotos = photoCards.slice(0, MIN_PHOTO_CARDS);
+
+  // Fill remaining slots from the other cards
+  shuffle(otherCards);
+  const remaining = SESSION_SIZE - pickedPhotos.length;
+  const pickedOthers = otherCards.slice(0, remaining);
+
+  const selected = [...pickedPhotos, ...pickedOthers];
+
+  // Interleave by theme so you don't get the same category twice in a row
   const buckets = {};
-  for (const c of CARDS) {
+  for (const c of selected) {
     if (!buckets[c.theme]) buckets[c.theme] = [];
     buckets[c.theme].push(c);
   }
-  // Shuffle each bucket
   for (const key of Object.keys(buckets)) shuffle(buckets[key]);
 
   const result = [];
   let lastTheme = null;
 
   while (Object.keys(buckets).some(k => buckets[k].length > 0)) {
-    // Eligible = buckets with cards, preferring a different theme
     const eligible = Object.keys(buckets).filter(k => buckets[k].length > 0 && k !== lastTheme);
     const pool = eligible.length > 0
       ? eligible
@@ -593,7 +610,7 @@ function renderFinale() {
       <div class="finale-emoji">🚀</div>
       <div class="finale-title">16 is just the launchpad.</div>
       <div class="finale-body">
-        30 cards, 30 reasons the world should pay attention.<br><br>
+        10 cards, 10 reasons the world should pay attention.<br><br>
         You're the kid who debates diplomats, scouts strikers better than Sky Sports, and tells Big Tech what it's doing wrong — <em>and you're right</em>.<br><br>
         Most people spend their whole lives waiting for permission to have a voice. You never waited. Keep going.<br><br>
         The next 16 years? The world's not ready.<br>
